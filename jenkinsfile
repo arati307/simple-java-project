@@ -20,11 +20,5 @@ pipeline {
                 }
         }
 
-
-        stage ('package Stage') {
-            steps {
-                    sh 'mvn package'
-                }
-        }
     }
 }
