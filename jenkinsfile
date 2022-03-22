@@ -1,11 +1,30 @@
 pipeline {
     agent any
+    tools { 
+        maven 'Maven1 3.8.5' 
+        jdk 'jdk9'
 
     stages {
-        stage('Hello') {
+        stage ('Compile Stage') {
+
             steps {
-                echo 'Hello World'
+                withMaven(maven : 'maven1 3.8.5') {
+                    sh 'mvn clean compile'
+                }
             }
+        }
+
+        stage ('Testing Stage') {
+
+            steps {
+                withMaven(maven : 'maven1 3.8.5') {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+
+
         }
     }
 }
